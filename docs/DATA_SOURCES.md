@@ -1,21 +1,27 @@
-# Data Sources (Phase 1)
+# Data Sources (Comprehensive Nordic Hydrology)
+
+This project leverages the full open data portals of the Swedish and Finnish national institutes to create a multi-modal, research-ready dataset.
 
 ## SMHI (Swedish Meteorological and Hydrological Institute)
-- **Type**: Station observations and reanalysis.
-- **Access**: SMHI Open Data API (REST).
-- **Variables**: Temperature, Precipitation, Snow Depth, Water level.
-
-## MESAN (Meteorological Analysis)
-- **Type**: Gridded reanalysis data over Sweden.
-- **Access**: SMHI Open Data GRIB2 files.
-- **Resolution**: 2.5 km grid.
+*   **Portal**: [SMHI Open Data Explorer](https://www.smhi.se/data/sok-oppna-data-i-utforskaren)
+*   **MetObs**: Real-time and historical station observations (Temperature, Precip, Snow).
+*   **HydObs**: Water level and discharge from Swedish gauging stations.
+*   **HYPE Model**: Outputs from the Hydrological Predictions for the Environment model, including flow, nitrogen, and phosphorus transport.
+*   **MESAN/STRÅNG**: Gridded reanalysis for meteorological and radiation parameters.
+*   **Climate Scenarios**: Regional climate model projections (Rossby Centre).
 
 ## FMI (Finnish Meteorological Institute)
-- **Type**: Station observations and satellite products.
-- **Access**: FMI Open Data WFS/WMS API.
-- **Variables**: Air temperature, Soil moisture, Snow depth.
+*   **Portal**: [FMI Open Data](https://en.ilmatieteenlaitos.fi/open-data)
+*   **Observations**: WFS-based weather, marine (sea level/waves), and air quality data.
+*   **Satellite Products**: H-SAF and MODIS-based snow cover and soil moisture products.
+*   **Radar**: High-resolution gridded precipitation data.
+*   **METIS**: Curated research datasets with persistent DOIs.
 
 ## Syke (Finnish Environment Institute)
-- **Type**: Hydrological and water quality field observations.
-- **Access**: OData API.
-- **Variables**: Discharge, Water temperature, Nutrient concentrations.
+*   **Type**: In-situ hydrological and water quality observations.
+*   **Access**: OData API.
+*   **Variables**: Catchment discharge, water temperature, and detailed nutrient profiles.
+
+## ECMWF/Copernicus (Secondary)
+*   **ERA5-Land**: Used for cross-validation and filling gaps in low-density station areas.
+*   **MODIS**: Direct ingestion of thermal and optical bands for snow mapping verification.
