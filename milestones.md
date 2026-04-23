@@ -14,7 +14,7 @@ This timeline focuses on the high-intensity period leading up to the paper submi
 
 | Milestone | Key Tasks | Target Date |
 | :--- | :--- | :--- |
-| **M1: Source Readiness** | Finalize extraction logic for SMHI, FMI, Syke, and MESAN. | April 26 |
+| **M1: Source Readiness** | Finalize extraction logic for SMHI (MetObs, HydObs, HYPE), FMI (Weather, Marine), Syke, and MESAN. | April 26 |
 | **M2: Harmonization** | Implement standardized reprojection to ETRS89-LAEA and temporal alignment. | April 28 |
 | **M3: Initial Merge** | Successful generation of a single versioned NetCDF file for a pilot region. | April 30 |
 
