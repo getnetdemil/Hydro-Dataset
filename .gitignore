@@ -45,4 +45,5 @@ data/processed/*
 # OS
 .DS_Store
 Thumbs.db
-Claude.md
+CLAUDE.md
+snow_project_update.md
