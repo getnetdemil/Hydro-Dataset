@@ -3,7 +3,7 @@
 PYTHON = python3
 SRC_DIR = ../src
 
-.PHONY: help extract-all extract-smhi extract-mesan extract-fmi extract-syke build-dataset clean
+.PHONY: help extract-all extract-smhi extract-mesan extract-fmi extract-syke build-dataset pilot-netcdf clean
 
 help:
 	@echo "Hydro-Dataset Pipeline Commands:"
@@ -29,10 +29,12 @@ extract-fmi:
 extract-syke:
 	$(PYTHON) $(SRC_DIR)/extraction/fetch_syke.py
 
-build-dataset:
-	@echo "Building dataset... (Add processing/derivation scripts here)"
-	# Example: $(PYTHON) $(SRC_DIR)/processing/clean_all.py
-	# Example: $(PYTHON) $(SRC_DIR)/derivation/derive_swe.py
+pilot-netcdf:
+	$(PYTHON) $(SRC_DIR)/extraction/fetch_smhi.py
+	$(PYTHON) ../scripts/build_pilot_netcdf.py
+
+build-dataset: pilot-netcdf
+	@echo "M3 pilot NetCDF complete: data/processed/pilot/dalarna_tier0_2023_2024.nc"
 
 clean:
 	rm -rf ../data/interim/*
