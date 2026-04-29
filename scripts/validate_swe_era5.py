@@ -55,6 +55,7 @@ def _check_cdsapi():
 def download_era5(out_path: Path) -> None:
     """Download ERA5-Land daily snow_depth for Dalarna 2023-10 to 2024-04."""
     import cdsapi
+    import zipfile
     out_path.parent.mkdir(parents=True, exist_ok=True)
     logger.info(f'Downloading ERA5-Land snow_depth → {out_path}')
     c = cdsapi.Client()
@@ -72,6 +73,17 @@ def download_era5(out_path: Path) -> None:
         },
         str(out_path),
     )
+    # CDS API v2 wraps the NetCDF in a ZIP — extract transparently
+    if zipfile.is_zipfile(out_path):
+        logger.info('Extracting NetCDF from CDS ZIP archive')
+        with zipfile.ZipFile(out_path) as zf:
+            nc_names = [n for n in zf.namelist() if n.endswith('.nc')]
+            if not nc_names:
+                raise RuntimeError('No .nc file found inside CDS ZIP archive')
+            tmp = out_path.with_suffix('.tmp.nc')
+            with zf.open(nc_names[0]) as src, open(tmp, 'wb') as dst:
+                dst.write(src.read())
+        tmp.replace(out_path)
     logger.info('ERA5-Land download complete')
 
 
@@ -96,19 +108,27 @@ def main():
     # 2. Load ERA5-Land
     era5 = xr.open_dataset(ERA5_PATH)
     # Variable may be named 'sd' or 'snow_depth' depending on ERA5 version
-    sd_var = 'sd' if 'sd' in era5 else 'snow_depth'
+    # ERA5-Land variable names vary by API version: sde (v2), sd, or snow_depth
+    for _candidate in ('sde', 'sd', 'snow_depth'):
+        if _candidate in era5:
+            sd_var = _candidate
+            break
+    else:
+        raise KeyError(f'No SWE variable found in ERA5 file. Available: {list(era5.data_vars)}')
     era5_swe_mm = era5[sd_var] * 1000.0   # m water equiv → mm
     logger.info(f'ERA5-Land loaded: {era5_swe_mm.shape}, variable={sd_var}')
 
     # ERA5-Land lat may be descending — normalize to ascending for interpolator
     lats_era5 = era5['latitude'].values.astype(float)
     lons_era5 = era5['longitude'].values.astype(float)
-    times_era5 = pd.DatetimeIndex(era5['time'].values).normalize()
+    # ERA5-Land v2 uses 'valid_time'; older versions use 'time'
+    time_coord = 'valid_time' if 'valid_time' in era5.coords else 'time'
+    times_era5 = pd.DatetimeIndex(era5[time_coord].values).normalize()
 
     ascending = lats_era5[0] < lats_era5[-1]
     if not ascending:
         lats_era5 = lats_era5[::-1]
-        era5_swe_mm = era5_swe_mm.isel(latitude=slice(None, None, -1))
+        era5_swe_mm = era5_swe_mm.isel(latitude=slice(None, None, -1)).compute()
 
     # 3. Load station pilot data and compute Sturm SWE
     logger.info(f'Loading pilot NetCDF: {PILOT_NC}')
@@ -132,7 +152,7 @@ def main():
         t_idx_era5 = list(times_era5).index(date)
         t_idx_pilot = list(times_pilot).index(date)
 
-        era5_slice = era5_swe_mm.isel(time=t_idx_era5).values   # shape: (lat, lon)
+        era5_slice = era5_swe_mm.isel({time_coord: t_idx_era5}).values   # shape: (lat, lon)
         interp = RegularGridInterpolator(
             (lats_era5, lons_era5), era5_slice, method='linear', bounds_error=False, fill_value=np.nan
         )
