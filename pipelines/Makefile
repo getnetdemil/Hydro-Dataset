@@ -3,7 +3,7 @@
 PYTHON = python3
 SRC_DIR = ../src
 
-.PHONY: help extract-all extract-smhi extract-mesan extract-fmi extract-syke build-dataset pilot-netcdf clean
+.PHONY: help extract-all extract-smhi extract-mesan extract-fmi extract-syke build-dataset pilot-netcdf swe-grid validate-swe clean
 
 help:
 	@echo "Hydro-Dataset Pipeline Commands:"
@@ -35,6 +35,12 @@ pilot-netcdf:
 
 build-dataset: pilot-netcdf
 	@echo "M3 pilot NetCDF complete: data/processed/pilot/dalarna_tier0_2023_2024.nc"
+
+swe-grid:
+	$(PYTHON) ../scripts/build_swe_grid.py
+
+validate-swe:
+	$(PYTHON) ../scripts/validate_swe_era5.py
 
 clean:
 	rm -rf ../data/interim/*
