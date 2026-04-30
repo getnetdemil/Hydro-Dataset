@@ -102,12 +102,94 @@ def calculate_swe_sturm(
     return swe_ds
 
 
-def calculate_runoff_potential(precip_ds: xr.Dataset, soil_moisture_ds: xr.Dataset) -> xr.Dataset:
+def calculate_runoff_potential(
+    precip_ds: xr.Dataset,
+    soil_moisture_ds: xr.Dataset,
+    precip_var: str = 'precip',
+    soil_moisture_var: str | None = None,
+    api_recession: float = 0.85,
+    saturation_deficit: float = 50.0,
+) -> xr.Dataset:
     """
-    Stub for Runoff Potential calculation fusing precipitation and soil moisture.
+    Daily runoff potential using the Antecedent Precipitation Index (API) method.
+
+    When soil_moisture_ds does not contain direct measurements, the API is
+    computed from the precipitation record as a soil wetness proxy:
+
+        API_t = k × API_{t-1} + P_t          (k = api_recession ≈ 0.85)
+        RC_t  = API_t / (API_t + S)           (S = saturation_deficit [mm])
+        Q_t   = P_t × RC_t                    [mm/day]
+
+    If soil_moisture_ds contains soil_moisture_var, those values initialise
+    the API on each time step where they are available (merged approach).
+
+    Args:
+        precip_ds:          Dataset with precip_var [mm]; dims (station_id, time).
+        soil_moisture_ds:   Dataset optionally containing soil_moisture_var [mm or -].
+        precip_var:         Precipitation variable name (default 'precip').
+        soil_moisture_var:  Soil moisture variable name; None = derive API from precip only.
+        api_recession:      API recession constant k (0–1; default 0.85 for Nordic soils).
+        saturation_deficit: Catchment storage parameter S [mm] (default 50 mm).
+
+    Returns:
+        Input dataset augmented with:
+            runoff_potential  [mm/day] — estimated daily surface runoff
+            runoff_coeff      [-]      — daily runoff coefficient (Q/P, 0–1)
+            api               [mm]     — antecedent precipitation index
     """
-    # Placeholder: Runoff = Precip * Soil_Moisture_Factor
-    return precip_ds
+    precip = precip_ds[precip_var].values.astype(float)   # (station_id, time)
+    n_stations, n_times = precip.shape
+
+    # Optional soil moisture to nudge API at available time steps
+    sm_values = None
+    if soil_moisture_var and soil_moisture_var in soil_moisture_ds:
+        sm_values = soil_moisture_ds[soil_moisture_var].values.astype(float)
+
+    api_arr  = np.zeros_like(precip)
+    runoff   = np.zeros_like(precip)
+    rc_arr   = np.zeros_like(precip)
+
+    for s in range(n_stations):
+        api_t = 0.0
+        for t in range(n_times):
+            p = precip[s, t]
+            if np.isnan(p):
+                api_arr[s, t] = np.nan
+                runoff[s, t]  = np.nan
+                rc_arr[s, t]  = np.nan
+                continue
+
+            # Nudge API with direct soil moisture if available
+            if sm_values is not None and not np.isnan(sm_values[s, t]):
+                api_t = sm_values[s, t]
+
+            api_t = api_recession * api_t + p
+            rc_t  = api_t / (api_t + saturation_deficit)
+            q_t   = p * rc_t
+
+            api_arr[s, t] = api_t
+            runoff[s, t]  = q_t
+            rc_arr[s, t]  = rc_t if p > 0 else np.nan
+
+    out = precip_ds.copy()
+    dims = precip_ds[precip_var].dims
+
+    out['runoff_potential'] = xr.DataArray(runoff, dims=dims, attrs={
+        'long_name': 'Estimated daily surface runoff potential (API method)',
+        'units': 'mm day-1',
+        'source': f'API recession k={api_recession}, saturation_deficit S={saturation_deficit} mm',
+    })
+    out['runoff_coeff'] = xr.DataArray(rc_arr, dims=dims, attrs={
+        'long_name': 'Daily runoff coefficient (runoff / precipitation)',
+        'units': '1',
+        'valid_range': [0.0, 1.0],
+    })
+    out['api'] = xr.DataArray(api_arr, dims=dims, attrs={
+        'long_name': 'Antecedent Precipitation Index (soil wetness proxy)',
+        'units': 'mm',
+        'recession_constant': api_recession,
+    })
+    return out
 
 
 # ---------------------------------------------------------------------------
