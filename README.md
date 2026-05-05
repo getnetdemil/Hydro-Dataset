@@ -112,10 +112,14 @@ Explore our extensive internal documentation for deep dives into our methodology
 ## 📅 Roadmap to HydroImaging 2026
 
 - [x] **Project Scaffolding** (Alpha Release)
-- [ ] **M1: Extraction Completion** (SMHI, FMI, Syke API integration)
-- [ ] **M2: Imaging-InSitu Fusion** (Spatio-temporal grid alignment)
-- [ ] **M3: Workshop Paper Submission** (May 13, 2026)
-- [ ] **M4: Benchmark Validation** (KGE/RMSE evaluation)
+- [x] **M1–M2: Extraction & Harmonization** (SMHI, FMI, Syke, MESAN; LAEA reprojection)
+- [x] **M3: Dalarna Pilot** — `dalarna_tier0_2023_2024.nc` (22 stations, CF-1.9)
+- [x] **M4: SWE Derivation & Validation** — Sturm (2010) + Kriging + ERA5-Land (R=0.78)
+- [x] **M6: Nordic Dataset v1.0** — `nordic_tier0_2015_2024.nc` (582 stations, 9 seasons)
+- [ ] **M5: Water Quality Proxy** (FMI turbidity + Syke nutrients)
+- [ ] **M7: Benchmarking** (RMSE/KGE vs field gold standards)
+- [ ] **M8: Visual Analytics** (spatial maps + time-series figures)
+- [ ] **M9: Submission** (May 13, 2026)
 
 ---
 
