@@ -27,8 +27,8 @@
 
 | Milestone | Key Tasks | Target | Status |
 |:---|:---|:---|:---|
-| **M7: Benchmarking** | RMSE/KGE vs field gold standards; DDM/phenology validation | May 09 | Pending |
-| **M8: Visual Analytics** | Spatial maps + time-series figures for paper | May 11 | Pending |
+| **M7: Benchmarking** | Interannual SWE anomaly + DDM calibration across 9 seasons | May 09 | **In Progress** |
+| **M8: Visual Analytics** | Spatial maps + time-series figures for paper | May 11 | **In Progress** |
 | **M9: Submission** | Finalize LaTeX/PDF → HydroImaging 2026 | **May 13** | Pending |
 
 ---
@@ -84,4 +84,16 @@
 
 ---
 
-**Last Updated**: 2026-04-30
+### M7 — Benchmarking (In Progress)
+- **Script**: `scripts/benchmark_snow_params.py` (`make benchmark`)
+- **Outputs** (after run): `data/processed/nordic/benchmark_results.json`, `ddm_per_season.csv`, `peak_swe_per_season.csv`
+- **Metrics**: per-season mean peak SWE, interannual SWE anomaly, DDM calibration (median + IQR), ROS events, freeze-thaw cycles across all 9 winters and 582 stations
+
+### M8 — Visual Analytics (In Progress)
+- **Script**: `scripts/generate_figures.py` (`make figures`)
+- **Requires**: M7 outputs
+- **Outputs**: `docs/figures/mean_peak_swe_map.png`, `swe_anomaly_timeseries.png`, `ddm_boxplot.png`, `ros_frequency_map.png`
+
+---
+
+**Last Updated**: 2026-05-05
