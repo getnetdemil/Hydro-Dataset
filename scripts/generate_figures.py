@@ -171,7 +171,7 @@ def fig_ddm_boxplot(ddm_df: pd.DataFrame):
     fig, ax = plt.subplots(figsize=(10, 4.5))
     bp = ax.boxplot(
         data,
-        labels=[s.replace('-', '\n') for s in seasons],
+        tick_labels=[s.replace('-', '\n') for s in seasons],
         patch_artist=True,
         medianprops={'color': 'black', 'linewidth': 1.5},
         whiskerprops={'linewidth': 1.0},
