@@ -106,9 +106,10 @@ Direct soil moisture measurements nudge API when available.
 
 ---
 
-## Planned (M7+)
-- **Interannual SWE anomaly** — requires multi-year baseline (2015–2024 data now available)
+## Planned (future versions)
 - **Hypsometric SWE distribution** — needs DEM (SRTM/Copernicus)
 - **Snow cover fraction validation** — FMI H-SAF vs kriged SWE extent
 - **Snowmelt-runoff lag** — melt rate + HydObs discharge (extractor ready)
-- **Water Quality Index** — Syke nutrients + FMI turbidity (M5)
+- **Manual SWE validation** — SMHI snow course measurements for independent cross-validation
+
+> Water Quality Index (Syke nutrients + FMI turbidity) is addressed in a companion paper.

@@ -20,7 +20,7 @@
 | Milestone | Key Tasks | Target | Status |
 |:---|:---|:---|:---|
 | **M4: SWE Derivation** | Sturm (2010) SWE model + Kriging upscale + ERA5-Land validation | May 03 | **Complete** |
-| **M5: Water Quality Proxy** | FMI satellite turbidity + Syke nutrient integration | May 05 | Pending — collaborator branch |
+| **M5: Water Quality Proxy** | FMI satellite turbidity + Syke nutrient integration | — | **Separate paper** |
 | **M6: Dataset Version 1.0** | `nordic_tier0_2015_2024.nc` — 582 stations, 9 seasons; derived params | May 07 | **Complete** |
 
 ### Phase 3: Validation & Paper Drafting (May 08 – May 13)
@@ -105,7 +105,7 @@
 | Branch | Purpose |
 |---|---|
 | `feature/snow-parameters` | Getnet — snow derivation, Nordic dataset (current) |
-| `feature/water-quality-pipeline` | Collaborator — M5 water quality track |
+| `feature/water-quality-pipeline` | Collaborator — water quality track (separate paper) |
 | `experiment` | Stable integration; `v1.0` tag to be applied after M6 merge |
 | `main` | Release-only; receives PRs from `experiment` at stable milestones |
 
@@ -115,7 +115,7 @@
 
 | Item | Owner | Deadline | Notes |
 |---|---|---|---|
-| M5: Water quality proxy | Collaborator | May 05 (overdue) | Blocked — `feature/water-quality-pipeline` |
+| M5: Water quality | Collaborator | TBD | Scoped to separate paper — out of scope for this submission |
 | M9: Manuscript final proofread + PDF | Getnet | May 13 | LaTeX compiles; figures embedded; needs final read |
 | M9: Zenodo dataset archive | Getnet | May 13 | Nordic v1.0 + code DOI for submission |
 | M9: Submit to HydroImaging 2026 | Getnet | May 13 | |

@@ -54,14 +54,14 @@
 
 - **API**: OData — `https://www.syke.fi/en-US/Open_information`
 - **Extractor**: `src/extraction/fetch_syke.py`
-- **Status**: Extractor implemented; water quality integration planned for M5
+- **Status**: Extractor implemented; discharge used for runoff calibration. Nutrient and turbidity variables are scoped to a companion water quality paper.
 
 | Variable | Units | Role |
 |---|---|---|
 | Discharge (Q) | m³/s | Runoff coefficient calibration |
-| Total nitrogen (TN) | µg/L | Water quality proxy |
-| Total phosphorus (TP) | µg/L | Water quality proxy |
-| Turbidity | FTU | Satellite cross-validation |
+| Total nitrogen (TN) | µg/L | Companion paper |
+| Total phosphorus (TP) | µg/L | Companion paper |
+| Turbidity | FTU | Companion paper |
 
 ---
 
