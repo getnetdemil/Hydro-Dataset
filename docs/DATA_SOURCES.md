@@ -86,9 +86,14 @@ for Foundation Model training (Pearson R = 0.78 with ERA5 confirms temporal agre
 
 | File | Description | Dimensions | Size |
 |---|---|---|---|
-| `data/processed/pilot/dalarna_tier0_2023_2024.nc` | Dalarna pilot, 1 season | 22 stations × 213 days | ~150 kB |
-| `data/processed/pilot/dalarna_swe_gridded_2023_2024.nc` | Kriged SWE/depth grid | 58 × 68 × 213 (LAEA) | ~60 MB |
-| `data/processed/nordic/nordic_tier0_2015_2024.nc` | Full Nordic, 9 seasons | 582 stations × 3135 days | 58 MB |
+| `data/processed/pilot/dalarna_tier0_2023_2024.nc` | Dalarna pilot, 1 season (raw obs) | 22 stations × 213 days | ~150 kB |
+| `data/processed/pilot/dalarna_swe_gridded_2023_2024.nc` | Kriged SWE/depth grid | 58 × 68 × 213 (LAEA) | ~13 MB |
+| `data/processed/nordic/nordic_tier0_2015_2024.nc` | Full Nordic, 9 seasons (raw obs only) | 582 stations × 3135 days | 58 MB |
+| `data/processed/nordic/nordic_tier1_2015_2024.nc` | **Zenodo primary**: Tier 0 + 6 derived parameters | 582 stations × 3135 days × 10 vars | 133 MB |
+
+Tier 1 derived variables: `swe` [mm], `snow_density` [g cm⁻³], `snowmelt_rate` [mm day⁻¹],
+`swe_accumulation_rate` [mm day⁻¹], `rain_on_snow` [int8 flag], `cold_content` [MJ m⁻²].
+Script: `scripts/enrich_nordic_netcdf.py` (`make enrich-netcdf`).
 
 All processed files follow CF-1.9 conventions. Raw data files (CSV, GRIB, NC) are
 excluded from git via `.gitignore`.
