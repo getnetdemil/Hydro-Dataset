@@ -1,134 +1,129 @@
-# <p align="center">❄️ Hydro-Dataset: Nordic Regional Hydrology ❄️</p>
+# Hydro-Dataset v1.1 — Nordic Snow Hydrology Pipeline
 
-<p align="center">
-  <strong>Multi-Modal Data Fusion for Snow, Water, and Environmental Research</strong>
-</p>
+**Multi-Modal Open-Source Pipeline for Nordic Hydrological Research and Foundation Model Benchmarking**
 
-<p align="center">
-  <a href="https://github.com/getnetdemil/Hydro-Dataset/actions"><img src="https://img.shields.io/badge/Build-Passing-brightgreen?style=for-the-badge&logo=github-actions" alt="Build Status"></a>
-  <a href="https://github.com/getnetdemil/Hydro-Dataset/wiki"><img src="https://img.shields.io/badge/Docs-Wiki-blue?style=for-the-badge&logo=wikipedia" alt="Documentation"></a>
-  <a href="https://hydroimaging.github.io/"><img src="https://img.shields.io/badge/Workshop-HydroImaging_2026-orange?style=for-the-badge" alt="Workshop"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" alt="License"></a>
-</p>
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
+[![Workshop](https://img.shields.io/badge/Workshop-HydroImaging_2026-orange?style=flat-square)](https://hydroimaging.github.io/)
+[![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue?style=flat-square)](https://www.python.org/)
+[![CF-1.9](https://img.shields.io/badge/NetCDF-CF--1.9-green?style=flat-square)](https://cfconventions.org/)
 
 ---
 
-## 🌊 Overview
+## Overview
 
-The **Hydro-Dataset** is a modular, script-driven pipeline designed to create a comprehensive, research-grade dataset for the Nordic region. By fusing **imaging data** (satellite and reanalysis) with **in-situ observations**, we provide high-fidelity benchmarks for:
+Hydro-Dataset v1.1 is a reproducible, script-driven pipeline that fuses Nordic meteorological and hydrological station observations into a research-grade benchmark dataset. It harmonizes **582 SMHI MetObs stations** across **nine hydrological winters (2015–2024)** into a unified CF-1.9 NetCDF product annotated with six derived snow parameters — providing **1.8 million annotated station-days** ready for Hydrological Foundation Model training.
 
-*   🏔️ **Snow Hydrology**: Downscaled Snow Water Equivalent (SWE) models.
-*   💧 **Water Resources**: Catchment-scale discharge and runoff potential.
-*   🌿 **Water Quality**: Spatio-temporal nutrient and turbidity monitoring.
-
-Developed for the **[Workshop on Mining Imaging Data for Hydrological and Environmental Modelling (HydroImaging 2026)](https://hydroimaging.github.io/)**, this project bridges the gap between Earth Observation (EO) and physical environmental modelling.
+Cross-validation against ERA5-Land confirms station-anchored SWE is more credible ground truth than reanalysis (Pearson R = 0.78, bias = −262 mm; ERA5-Land systematically overestimates SWE in Scandinavian boreal terrain).
 
 ---
 
-## 🛰️ Phase 1 Data Ecosystem
+## Output Products
 
-We harmonize heterogeneous data streams from four major Nordic providers:
-
-| Provider | Origin | Type | Primary Variables |
+| Product | Filename | Size | Contents |
 | :--- | :--- | :--- | :--- |
-| **🇸🇪 SMHI** | Sweden | Station | Temp, Precip, Snow Depth, Water Level |
-| **🧩 MESAN** | Sweden | Reanalysis | 2.5km Meteorological Grids (Imaging) |
-| **🇫🇮 FMI** | Finland | Station/EO | Satellite Snow Cover, Soil Moisture |
-| **🌊 Syke** | Finland | Hydrological | Discharge (Q), Nutrients (N, P), Turbidity |
+| **Tier 0** | `nordic_tier0_2015_2024.nc` | 58 MB | Raw harmonised observations (4 variables) |
+| **Tier 1** | `nordic_tier1_2015_2024.nc` | 133 MB | Tier 0 + 6 derived snow parameters |
+
+Both products are CF-1.9 compliant and loadable with `xarray.open_dataset()`. Zenodo archive (DOI forthcoming upon publication).
 
 ---
 
-## 🏗️ Project Architecture
+## Data Sources
 
-The codebase follows a strictly modular, "Pipeline-First" philosophy:
+| Provider | Type | Key Variables |
+| :--- | :--- | :--- |
+| **SMHI MetObs** | Station | Air temperature, precipitation, snow depth |
+| **SMHI HydObs** | Station | Discharge (m³/s) |
+| **FMI** | Station | Air temperature, precipitation, snow depth |
+| **MESAN** | 2.5 km Reanalysis | Meteorological fields (Kriging reference grid) |
+| **ERA5-Land** | Reanalysis | SWE — cross-validation only |
 
-```text
-Hydro-Dataset/
-├── data/                 # 📂 Multi-tier storage (Raw ➔ Interim ➔ Processed)
-├── docs/                 # 📖 Deep documentation and Project Wiki
-├── notebooks/            # 🧪 EDA and Research Prototyping
-├── pipelines/            # ⚙️ Orchestration layer (Makefile-driven)
-├── src/                  # 💻 Modular Python Logic
-│   ├── common/           # Shared utilities (Geo-utils, Config, IO)
-│   ├── extraction/       # Provider-specific API downloaders
-│   ├── processing/       # Spatial alignment & QC cleaning
-│   └── derivation/       # Research-grade parameter logic (SWE, Runoff)
-├── tests/                # 🚦 Automated Validation Suite
-└── .env.example          # 🔑 Environment Template
+---
+
+## Derived Snow Parameters
+
+| Parameter | Method | Units |
+| :--- | :--- | :--- |
+| Snow Water Equivalent (SWE) | Sturm et al. (2010) taiga density model | mm |
+| Snow phenology | Onset DOY, melt-out DOY, duration, peak SWE day | days |
+| Melt & accumulation rates | SWE finite differences | mm day⁻¹ |
+| Degree-day melt factor (DDM) | Hock (2003) temperature-index | mm °C⁻¹ day⁻¹ |
+| Rain-on-snow flag | Depth + temperature + precipitation threshold | binary |
+| Freeze-thaw cycles | Sign changes in daily temperature series | count |
+
+---
+
+## Pipeline Architecture
+
+```
+DATA SOURCES → EXTRACTION → PROCESSING → DERIVATION → OUTPUT
+               src/extraction/  src/processing/  src/derivation/
+               data/raw/        data/interim/    data/processed/
 ```
 
+Four strictly ordered phases — never skip tiers, never mix extraction with derivation.
+
+| Phase | Module | Key Operations |
+| :--- | :--- | :--- |
+| Extraction | `src/extraction/` | Provider-specific fetchers (SMHI, FMI, MESAN) |
+| Processing | `src/processing/` | LAEA reproject (EPSG:3035), QC outlier flags, linear gap-fill, Kriging 2.5 km |
+| Derivation | `src/derivation/` | SWE (Sturm 2010), phenology, melt dynamics, DDM, rain-on-snow, freeze-thaw |
+| Common | `src/common/` | Config, geo-utils (WGS84→LAEA), CF-1.9 NetCDF I/O, logging |
+
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
-### 1. Environment Setup
-Clone the repository and initialize your Python environment:
 ```bash
-git clone https://github.com/getnetdemil/Hydro-Dataset.git
+git clone <repo-url>
 cd Hydro-Dataset
-python -m venv .venv
-source .venv/bin/activate
+python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
+cp .env.example .env          # add SMHI / FMI / CDS API keys
 ```
 
-### 2. Configuration
-Create your local environment file and adjust the data directories:
-```bash
-cp .env.example .env
-# Edit .env with your local paths and API keys
-```
-
-### 3. Execution
-Run the end-to-end pipeline using the provided Makefile:
 ```bash
 cd pipelines
-make extract-all     # Ingest raw data from all providers
-make build-dataset   # Harmonize, process, and derive parameters
+make extract-smhi             # download 582 SMHI station CSVs
+make nordic-netcdf            # build Tier 0 NetCDF (58 MB)
+make enrich-netcdf            # embed derived parameters → Tier 1 (133 MB)
+make validate-swe             # ERA5-Land cross-validation
+make benchmark                # 9-season interannual benchmarking
+make figures                  # generate manuscript figures
 ```
 
 ---
 
-## 📊 Foundation Model Ready
+## Tests
 
-This project is a pioneer in creating **Foundation-Model-Ready** environmental benchmarks. We provide:
-*   ✅ **Clean, Aligned Cubes**: Xarray-compatible NetCDF files ready for LLM/VLM training.
-*   ✅ **Metadata Compliance**: Full adherence to CF (Climate and Forecast) conventions.
-*   ✅ **Image-Text Pairs**: Curated datasets for training Vision-Language Models.
-
----
-
-## 📖 Documentation & Research
-
-Explore our extensive internal documentation for deep dives into our methodology:
-
-*   📘 **[Project Wiki](https://github.com/getnetdemil/Hydro-Dataset/wiki)** - The "Big Picture" knowledge base.
-*   📐 **[System Architecture](docs/ARCHITECTURE.md)** - Logic and data flow details.
-*   🛰️ **[Data Source Registry](docs/DATA_SOURCES.md)** - API specs and variables.
-*   🧪 **[Derivation Methods](docs/DERIVATION_METHODS.md)** - Formulas and ML models.
-*   🤝 **[Contributing Rules](docs/CONTRIBUTING.md)** - Guide for researchers.
+```bash
+pytest                                      # all 53 tests
+pytest tests/test_swe_sturm.py             # Sturm SWE model — 16 tests
+pytest tests/test_kriging.py               # Kriging upscale — 8 tests
+pytest tests/test_snow_derived_params.py   # Derived parameters — 28 tests
+pytest --cov=src                           # with coverage report
+```
 
 ---
 
-## 📅 Roadmap to HydroImaging 2026
+## Repository Structure
 
-- [x] **Project Scaffolding** (Alpha Release)
-- [x] **M1–M2: Extraction & Harmonization** (SMHI, FMI, Syke, MESAN; LAEA reprojection)
-- [x] **M3: Dalarna Pilot** — `dalarna_tier0_2023_2024.nc` (22 stations, CF-1.9)
-- [x] **M4: SWE Derivation & Validation** — Sturm (2010) + Kriging + ERA5-Land (R=0.78)
-- [x] **M6: Nordic Dataset v1.0** — `nordic_tier0_2015_2024.nc` (582 stations, 9 seasons)
-- [ ] **M5: Water Quality Proxy** (FMI turbidity + Syke nutrients)
-- [ ] **M7: Benchmarking** (RMSE/KGE vs field gold standards)
-- [ ] **M8: Visual Analytics** (spatial maps + time-series figures)
-- [ ] **M9: Submission** (May 13, 2026)
+```
+Hydro-Dataset/
+├── src/
+│   ├── extraction/       # Provider-specific API fetchers
+│   ├── processing/       # Spatial alignment, QC, Kriging
+│   ├── derivation/       # Snow parameter logic
+│   └── common/           # Config, geo-utils, I/O, logging
+├── scripts/              # Driver scripts (build NetCDF, validate, benchmark, figures)
+├── pipelines/            # Makefile orchestration
+├── tests/                # 53 automated tests (pytest)
+├── data/                 # raw/ → interim/ → processed/ (not committed)
+└── .env.example          # environment template
+```
 
 ---
 
-<p align="center">
-  <i>"Harnessing the power of multi-sensor data to model the Nordic water cycle."</i>
-</p>
+## License
 
-<p align="center">
-  <img src="https://img.shields.io/github/issues/getnetdemil/Hydro-Dataset?style=flat-square" alt="Issues">
-  <img src="https://img.shields.io/github/stars/getnetdemil/Hydro-Dataset?style=flat-square" alt="Stars">
-  <img src="https://img.shields.io/github/forks/getnetdemil/Hydro-Dataset?style=flat-square" alt="Forks">
-</p>
+MIT. Raw input data are openly accessible via the [SMHI Open Data API](https://opendata.smhi.se) and [FMI Open Data portal](https://en.ilmatieteenlaitos.fi/open-data); no registration required.

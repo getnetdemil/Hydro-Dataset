@@ -45,3 +45,11 @@ data/processed/*
 # OS
 .DS_Store
 Thumbs.db
+
+# Internal documentation — excluded from remote (keep README.md only)
+*.md
+!README.md
+
+# GitHub management files
+issues_labels.tsv
+issues_to_link.json
