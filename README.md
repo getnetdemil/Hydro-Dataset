@@ -1,4 +1,4 @@
-**# 𝑯𝒀𝑫𝑹𝑶-𝑫𝑨𝑻𝑨𝑺𝑬𝑻 v1.1: 𝑨 𝑴𝒖𝒍𝒕𝒊-𝑴𝒐𝒅𝒂𝒍 𝑶𝒑𝒆𝒏-𝑺𝒐𝒖𝒓𝒄𝒆 𝑷𝒊𝒑𝒆𝒍𝒊𝒏𝒆 𝒇𝒐𝒓 𝑵𝒐𝒓𝒅𝒊𝒄 𝑯𝒚𝒅𝒓𝒐𝒍𝒐𝒈𝒊𝒄𝒂𝒍 𝑹𝒆𝒔𝒆𝒂𝒓𝒄𝒉 𝒂𝒏𝒅 𝑭𝒐𝒖𝒏𝒅𝒂𝒕𝒊𝒐𝒏 𝑴𝒐𝒅𝒆𝒍 𝑩𝒆𝒏𝒄𝒉𝒎𝒂𝒓𝒌𝒊𝒏𝒈**
+# 𝑯𝒀𝑫𝑹𝑶-𝑫𝑨𝑻𝑨𝑺𝑬𝑻 v1.1: A Multi-Modal Open-Source Pipeline for Nordic Hydrological Research and Foundation Model Benchmarking
 **Multi-Modal Open-Source Pipeline for Nordic Hydrological Research and Foundation Model Benchmarking**
 
 Dataset: [https://zenodo.org/records/20287300](https://zenodo.org/records/20287300)
