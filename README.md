@@ -2,6 +2,8 @@
 
 **Multi-Modal Open-Source Pipeline for Nordic Hydrological Research and Foundation Model Benchmarking**
 
+Dataset: [https://zenodo.org/records/20287300](https://zenodo.org/records/20287300)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 [![Workshop](https://img.shields.io/badge/Workshop-HydroImaging_2026-orange?style=flat-square)](https://hydroimaging.github.io/)
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue?style=flat-square)](https://www.python.org/)
