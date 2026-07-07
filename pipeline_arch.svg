@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 506" width="820" height="506">
+<!-- <rect x="0" y="0" width="820" height="506" rx="0" fill="#f4f7fb" stroke="none" stroke-width="0"/>
+<rect x="6" y="6" width="808" height="494" rx="8" fill="#ffffff" stroke="#0d2137" stroke-width="1.8"/>
+<path d="M14,6 H806 Q814,6 814,14 V40 H6 V14 Q6,6 14,6" fill="#0d2137"/>
+<text x="350.0" y="20" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" style="">Hydro-Dataset v1.1</text>
+<text x="350.0" y="34" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="#a8c8e8" style="font-style:italic;">System Architecture</text>
+<text x="802" y="28" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="normal" fill="#7fb3d3" style="font-style:italic;">Reproducible pipeline · 582 stations · 9 winters · CF-1.9</text> -->
+<rect x="14" y="48" width="752" height="68" rx="6" fill="#eef4fb" stroke="#b8cfe8" stroke-width="1"/>
+  
+<rect x="22" y="54" width="20" height="13" rx="3" fill="#1a4a7a" stroke="none" stroke-width="0"/>
+<text x="32" y="64" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="bold" fill="#ffffff" style="">A</text>
+<text x="48" y="64" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="bold" fill="#1a4a7a" style="" letter-spacing="0.5">DATA SOURCES</text>
+<rect x="24.0" y="70" width="129.72" height="46" rx="5" fill="#d6eaf8" stroke="#1a5276" stroke-width="1.2"/>
+<path d="M29.0,70 H148.72 Q153.72,70 153.72,75 V77 H24.0 V75 Q24.0,70 29.0,70" fill="#1a5276"/>
+<circle cx="88.86" cy="85" r="4" fill="#1a5276" opacity="0.4"/>
+<circle cx="88.86" cy="85" r="2" fill="#1a5276"/>
+<text x="88.86" y="96" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8.5" font-weight="bold" fill="#1a202c" style="">SMHI MetObs</text>
+<text x="88.86" y="107" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="7.5" font-weight="normal" fill="#4a5568" style="font-style:italic;">snow·temp·precip</text>
+<rect x="161.72" y="70" width="129.72" height="46" rx="5" fill="#c8def5" stroke="#1a5276" stroke-width="1.2"/>
+<path d="M166.72,70 H286.44 Q291.44,70 291.44,75 V77 H161.72 V75 Q161.72,70 166.72,70" fill="#1a5276"/>
+<circle cx="226.57999999999998" cy="85" r="4" fill="#1a5276" opacity="0.4"/>
+<circle cx="226.57999999999998" cy="85" r="2" fill="#1a5276"/>
+<text x="226.57999999999998" y="96" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8.5" font-weight="bold" fill="#1a202c" style="">SMHI HydObs</text>
+<text x="226.57999999999998" y="107" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="7.5" font-weight="normal" fill="#4a5568" style="font-style:italic;">discharge</text>
+<rect x="299.44" y="70" width="129.72" height="46" rx="5" fill="#d5f5e3" stroke="#0b5345" stroke-width="1.2"/>
+<path d="M304.44,70 H424.15999999999997 Q429.15999999999997,70 429.15999999999997,75 V77 H299.44 V75 Q299.44,70 304.44,70" fill="#0b5345"/>
+<circle cx="364.3" cy="85" r="4" fill="#0b5345" opacity="0.4"/>
+<circle cx="364.3" cy="85" r="2" fill="#0b5345"/>
+<text x="364.3" y="96" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8.5" font-weight="bold" fill="#1a202c" style="">FMI WFS</text>
+<text x="364.3" y="107" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="7.5" font-weight="normal" fill="#4a5568" style="font-style:italic;">temp·snow·precip</text>
+<rect x="437.15999999999997" y="70" width="129.72" height="46" rx="5" fill="#f2f3f4" stroke="#515a5a" stroke-width="1.2"/>
+<path d="M442.15999999999997,70 H561.88 Q566.88,70 566.88,75 V77 H437.15999999999997 V75 Q437.15999999999997,70 442.15999999999997,70" fill="#515a5a"/>
+<rect x="498.02" y="81" width="2" height="2" rx="0.4" fill="#515a5a" opacity="0.5"/>
+<rect x="498.02" y="84" width="2" height="2" rx="0.4" fill="#515a5a" opacity="0.5"/>
+<rect x="498.02" y="87" width="2" height="2" rx="0.4" fill="#515a5a" opacity="0.5"/>
+<rect x="501.02" y="81" width="2" height="2" rx="0.4" fill="#515a5a" opacity="0.5"/>
+<rect x="501.02" y="84" width="2" height="2" rx="0.4" fill="#515a5a" opacity="0.5"/>
+<rect x="501.02" y="87" width="2" height="2" rx="0.4" fill="#515a5a" opacity="0.5"/>
+<rect x="504.02" y="81" width="2" height="2" rx="0.4" fill="#515a5a" opacity="0.5"/>
+<rect x="504.02" y="84" width="2" height="2" rx="0.4" fill="#515a5a" opacity="0.5"/>
+<rect x="504.02" y="87" width="2" height="2" rx="0.4" fill="#515a5a" opacity="0.5"/>
+<text x="502.02" y="96" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8.5" font-weight="bold" fill="#1a202c" style="">MESAN 2.5 km</text>
+<text x="502.02" y="107" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="7.5" font-weight="normal" fill="#4a5568" style="font-style:italic;">LAEA ref. grid</text>
+<rect x="584.88" y="70" width="170.95999999999998" height="46" rx="5" fill="#fdebd0" stroke="#a04000" stroke-width="1.2" stroke-dasharray="6,3"/>
+<path d="M579.88,70 H750.8399999999999 Q755.8399999999999,70 755.8399999999999,75 V77 H584.88 V75 Q584.88,70 589.88,70" fill="#a04000"/>
+<rect x="671.36" y="81" width="2" height="2" rx="0.4" fill="#a04000" opacity="0.5"/>
+<rect x="671.36" y="84" width="2" height="2" rx="0.4" fill="#a04000" opacity="0.5"/>
+<rect x="671.36" y="87" width="2" height="2" rx="0.4" fill="#a04000" opacity="0.5"/>
+<rect x="674.36" y="81" width="2" height="2" rx="0.4" fill="#a04000" opacity="0.5"/>
+<rect x="674.36" y="84" width="2" height="2" rx="0.4" fill="#a04000" opacity="0.5"/>
+<rect x="674.36" y="87" width="2" height="2" rx="0.4" fill="#a04000" opacity="0.5"/>
+<rect x="677.36" y="81" width="2" height="2" rx="0.4" fill="#a04000" opacity="0.5"/>
+<rect x="677.36" y="84" width="2" height="2" rx="0.4" fill="#a04000" opacity="0.5"/>
+<rect x="677.36" y="87" width="2" height="2" rx="0.4" fill="#a04000" opacity="0.5"/>
+<text x="675.36" y="96" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8.5" font-weight="bold" fill="#1a202c" style="">ERA5-Land †</text>
+<text x="675.36" y="107" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="7.5" font-weight="normal" fill="#4a5568" style="font-style:italic;">cross-val only</text>
+<line x1="575.9" y1="66.0" x2="575.9" y2="110.0" stroke="#b8cfe8" stroke-width="0.8" stroke-dasharray="4,3"/>
+<line x1="88.9" y1="116.0" x2="88.9" y2="120.0" stroke="#1a5276" stroke-width="1.1"/>
+<line x1="226.6" y1="116.0" x2="226.6" y2="120.0" stroke="#1a5276" stroke-width="1.1"/>
+<line x1="364.3" y1="116.0" x2="364.3" y2="120.0" stroke="#1a5276" stroke-width="1.1"/>
+<line x1="502.0" y1="116.0" x2="502.0" y2="120.0" stroke="#1a5276" stroke-width="1.1"/>
+<line x1="88.9" y1="120.0" x2="502.0" y2="120.0" stroke="#1a5276" stroke-width="1.1"/>
+<line x1="295.4" y1="120.0" x2="410.0" y2="120.0" stroke="#5b8abf" stroke-width="1" stroke-dasharray="3,2"/>
+<defs><marker id="ad_410_120" markerWidth="8" markerHeight="6" refX="7" refY="3.0" orient="auto"><polygon points="0 0, 8 3.0, 0 6" fill="#3d6b9a"/></marker></defs>
+<line x1="410.0" y1="120.0" x2="410.0" y2="144.0" stroke="#3d6b9a" stroke-width="1.6" marker-end="url(#ad_410_120)"/>
+<defs><marker id="ad_675_116" markerWidth="8" markerHeight="6" refX="7" refY="3.0" orient="auto"><polygon points="0 0, 8 3.0, 0 6" fill="#a04000"/></marker></defs>
+<line x1="675.4" y1="116.0" x2="675.4" y2="275.0" stroke="#a04000" stroke-width="1.2" stroke-dasharray="5,3" marker-end="url(#ad_675_116)"/>
+  
+<rect x="601.36" y="239.0" width="68" height="15" rx="3" fill="#fdebd0" stroke="#a04000" stroke-width="0.8" stroke-dasharray="4,2"/>
+<text x="635.36" y="249.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="7" font-weight="normal" fill="#a04000" style="font-style:italic;">cross-validation</text>
+
+  <rect x="14" y="124" width="752" height="224" rx="6" fill="none" stroke="#c8d8ec" stroke-width="1"/>
+<rect x="22" y="130" width="20" height="13" rx="3" fill="#1a3a5c" stroke="none" stroke-width="0"/>
+<text x="32" y="140" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="bold" fill="#ffffff" style="">B</text>
+<text x="48" y="140" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="bold" fill="#1a3a5c" style="" letter-spacing="0.5">PROCESSING PIPELINE</text>
+<rect x="24" y="146" width="472" height="50" rx="5" fill="#e8f4fd" stroke="#2e86c1" stroke-width="1.2"/>
+<path d="M29,146 H68 V196 H24 V151 Q24,146 29,146" fill="#154a7a"/>
+<text x="46.0" y="165.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" style="">01</text>
+<text x="46.0" y="179.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" style="">▸</text>
+<text x="80" y="161" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="10.5" font-weight="bold" fill="#154a7a" style="">EXTRACTION</text>
+<text x="80" y="174" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="7.5" font-weight="normal" fill="#718096" style="font-style:italic;">src / extraction /</text>
+<text x="80" y="189" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="8.5" font-weight="normal" fill="#4a5568" style="">fetch_smhi.py  ·  fetch_smhi_hydobs.py  ·  fetch_fmi.py  ·  fetch_mesan.py  ·  fetch_syke.py</text>
+<text x="488" y="175.0" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="7.5" font-weight="normal" fill="#2e86c1" style="font-style:italic;">→ data/raw/</text>
+<defs><marker id="ad_410_196" markerWidth="8" markerHeight="6" refX="7" refY="3.0" orient="auto"><polygon points="0 0, 8 3.0, 0 6" fill="#2e86c1"/></marker></defs>
+<line x1="410.0" y1="196.0" x2="410.0" y2="210.0" stroke="#2e86c1" stroke-width="1.5" marker-end="url(#ad_410_196)"/>
+<rect x="24" y="212" width="472" height="50" rx="5" fill="#edf7f2" stroke="#1e8449" stroke-width="1.2"/>
+<path d="M29,212 H68 V262 H24 V217 Q24,212 29,212" fill="#0a4d3c"/>
+<text x="46.0" y="231.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" style="">02</text>
+<text x="46.0" y="245.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" style="">▸</text>
+<text x="80" y="227" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="10.5" font-weight="bold" fill="#0a4d3c" style="">PROCESSING</text>
+<text x="80" y="240" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="7.5" font-weight="normal" fill="#718096" style="font-style:italic;">src / processing /</text>
+<text x="80" y="255" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="8.5" font-weight="normal" fill="#4a5568" style="">LAEA reproject (EPSG:3035)  ·  Temporal normalisation  ·  QC outlier flagging  ·  Gap-fill ≤ 3 d  ·  Kriging 2.5 km</text>
+<text x="488" y="241.0" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="7.5" font-weight="normal" fill="#1e8449" style="font-style:italic;">→ data/interim/</text>
+<defs><marker id="ad_410_262" markerWidth="8" markerHeight="6" refX="7" refY="3.0" orient="auto"><polygon points="0 0, 8 3.0, 0 6" fill="#1e8449"/></marker></defs>
+<line x1="410.0" y1="262.0" x2="410.0" y2="276.0" stroke="#1e8449" stroke-width="1.5" marker-end="url(#ad_410_262)"/>
+
+  
+<rect x="324" y="278" width="432" height="50" rx="5" fill="#f3eefb" stroke="#7d3c98" stroke-width="1.2"/>
+<path d="M329,278 H368 V328 H324 V283 Q324,278 329,278" fill="#3b1f5e"/>
+<text x="346.0" y="297.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" style="">03</text>
+<text x="346.0" y="311.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" style="">▸</text>
+
+  
+<text x="380" y="293" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="10.5" font-weight="bold" fill="#3b1f5e" style="">DERIVATION</text>
+<text x="380" y="306" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="7.5" font-weight="normal" fill="#718096" style="font-style:italic;">src / derivation /</text>
+<text x="380" y="321" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="8.5" font-weight="normal" fill="#4a5568" style="">SWE (Sturm 2010)  ·  Phenology  ·  Melt &amp; accum. rates  ·  DDM  ·  Rain-on-snow  ·  Freeze-thaw</text>
+<text x="748" y="307.0" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="7.5" font-weight="normal" fill="#7d3c98" style="font-style:italic;">→ data/processed/</text>
+<line x1="217.0" y1="262.0" x2="217.0" y2="358.0" stroke="#1e8449" stroke-width="1.2"/>
+<line x1="217.0" y1="358.0" x2="182.4" y2="358.0" stroke="#1e8449" stroke-width="1.2"/>
+<defs><marker id="ad_182_358" markerWidth="8" markerHeight="6" refX="7" refY="3.0" orient="auto"><polygon points="0 0, 8 3.0, 0 6" fill="#1e8449"/></marker></defs>
+<line x1="182.4" y1="358.0" x2="182.4" y2="356.0" stroke="#1e8449" stroke-width="1.5" marker-end="url(#ad_182_358)"/>
+<defs><marker id="ad_576_328" markerWidth="8" markerHeight="6" refX="7" refY="3.0" orient="auto"><polygon points="0 0, 8 3.0, 0 6" fill="#2e86c1"/></marker></defs>
+<line x1="576.5" y1="328.0" x2="576.5" y2="356.0" stroke="#2e86c1" stroke-width="1.5" marker-end="url(#ad_576_328)"/>
+<text x="221.0" y="272" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="7" font-weight="normal" fill="#718096" style="font-style:italic;">build_nordic_netcdf.py</text>
+<text x="580.52" y="338" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="7" font-weight="normal" fill="#718096" style="font-style:italic;">enrich_nordic_netcdf.py</text>
+
+  
+<rect x="14" y="356" width="752" height="100" rx="6" fill="#f0f9f4" stroke="#9ecdb8" stroke-width="1"/>
+<rect x="22" y="362" width="20" height="13" rx="3" fill="#0a4d3c" stroke="none" stroke-width="0"/>
+<text x="32" y="372" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="bold" fill="#ffffff" style="">C</text>
+<text x="48" y="372" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="bold" fill="#0a4d3c" style="" letter-spacing="0.5">DATASET PRODUCTS</text>
+<rect x="26" y="378" width="310.8" height="75" rx="6" fill="#c8d0da" stroke="none" stroke-width="0"/>
+<rect x="24" y="376" width="310.8" height="75" rx="6" fill="#e6f7ee" stroke="#1e8449" stroke-width="1.3"/>
+  
+<path d="M24,376 H328.8 Q334.8,376 334.8,382 V402 H24 V382 Q24,376 30,376" fill="#0a4d3c"/>
+<text x="182.4" y="394.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="bold" fill="#ffffff" style="">Tier 0 — Raw Observations</text>
+<text x="182.4" y="418" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8.8" font-weight="bold" fill="#1a202c" style="">nordic_tier0_2015_2024.nc</text>
+<text x="182.4" y="432" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8.3" font-weight="normal" fill="#4a5568" style="">582 st. × 3 135 days · 58 MB</text>
+<text x="182.4" y="446" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8.3" font-weight="normal" fill="#4a5568" style="">4 vars: snow_depth · temp · precip</text>
+<defs><marker id="ar_341_412" markerWidth="8" markerHeight="6" refX="7" refY="3.0" orient="auto"><polygon points="0 0, 8 3.0, 0 6" fill="#2e86c1"/></marker></defs>
+<line x1="341.8" y1="412.0" x2="347.8" y2="412.0" stroke="#2e86c1" stroke-width="1.8" marker-end="url(#ar_341_412)"/>
+<text x="310.8" y="416.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="7.5" font-weight="normal" fill="#2e86c1" style="font-style:italic;">+ 6 derived</text>
+
+  
+<rect x="352.8" y="378" width="411.43999999999994" height="75" rx="6" fill="#c8d0da" stroke="none" stroke-width="0"/>
+<rect x="350.8" y="376" width="411.43999999999994" height="75" rx="6" fill="#dbeafe" stroke="#2e86c1" stroke-width="2.2"/>
+<path d="M316.8,376 H756.24 Q762.24,376 762.24,382 V402 H350.8 V382 Q350.8,376 356.8,376" fill="#0f3460"/>
+<text x="754.24" y="394" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="7" fill="#ffffff" font-weight="bold" letter-spacing="0.5">★ ZENODO PRIMARY</text>
+<text x="576.52" y="394.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="bold" fill="#ffffff" style="">Tier 1 — Derived Dataset</text>
+<text x="576.52" y="418" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8.8" font-weight="bold" fill="#1a202c" style="">nordic_tier1_2015_2024.nc</text>
+<text x="576.52" y="432" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8.3" font-weight="normal" fill="#4a5568" style="">582 st. × 3 135 days · 133 MB</text>
+<text x="576.52" y="446" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8.3" font-weight="normal" fill="#4a5568" style="">SWE · Phenology · Melt · DDM · ROS · FT  |  CF-1.9</text>
+</svg>
